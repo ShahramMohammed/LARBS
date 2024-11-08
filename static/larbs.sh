@@ -6,8 +6,8 @@
 
 ### OPTIONS AND VARIABLES ###
 
-dotfilesrepo="git@github.com:ShahramMohammed/dotfiles.git"
-progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/static/progs.csv"
+dotfilesrepo="git@github.com:ShahramMohammed/.dotfiles.git"
+progsfile="https://raw.githubusercontent.com/ShahramMohammed/LARBS/master/static/progs.csv"
 aurhelper="yay"
 repobranch="master"
 export TERM=ansi
