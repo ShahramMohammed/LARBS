@@ -337,7 +337,7 @@ rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/
 [ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ] && vimplugininstall
 
 # Symlink nvchad custom config to nvchad directory
-ln -s ~/.config/nvchad-custom ~/.config/nvim/lua/custom
+ln -s ~/.config/nvchad-custom/custom ~/.config/nvim/lua/custom
 
 # Most important command! Get rid of the beep!
 rmmod pcspkr
