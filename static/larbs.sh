@@ -192,13 +192,22 @@ putgitrepo() {
 	sudo -u "$name" cp -rfT "$dir" "$2"
 }
 
-vimplugininstall() {
+# vimplugininstall() {
+# 	# Installs vim plugins.
+# 	whiptail --infobox "Installing neovim plugins..." 7 60
+# 	mkdir -p "/home/$name/.config/nvim/autoload"
+# 	curl -Ls "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >  "/home/$name/.config/nvim/autoload/plug.vim"
+# 	chown -R "$name:wheel" "/home/$name/.config/nvim"
+# 	sudo -u "$name" nvim -c "PlugInstall|q|q"
+# }
+
+nvchadinstall() {
 	# Installs vim plugins.
 	whiptail --infobox "Installing neovim plugins..." 7 60
-	mkdir -p "/home/$name/.config/nvim/autoload"
-	curl -Ls "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >  "/home/$name/.config/nvim/autoload/plug.vim"
+	mkdir -p "/home/$name/.config/nvim/"
 	chown -R "$name:wheel" "/home/$name/.config/nvim"
-	sudo -u "$name" nvim -c "PlugInstall|q|q"
+  ln -s "home/$name/.config/nvchad-custom/custom" "home/$name/.local/src/NvChad/lua/custom"
+  ln -s "home/$name/local/src/NvChad ~/.config/nvim/"
 }
 
 makeuserjs(){
@@ -327,17 +336,16 @@ installationloop
 # Install the dotfiles in the user's home directory, but remove .git dir and
 # other unnecessary files.
 putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
-rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+# rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+rm -rf "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
 
 # Write urls for newsboat if it doesn't already exist
 [ -s "/home/$name/.config/newsboat/urls" ] ||
 	sudo -u "$name" echo "$rssurls" > "/home/$name/.config/newsboat/urls"
 
-# Install vim plugins if not alread present.
-[ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ] && vimplugininstall
+# Install nvchad if not alread present.
+[ ! -f "/home/$name/.config/nvim/lua" ] && nvchadinstall
 
-# Symlink nvchad custom config to nvchad directory
-ln -s ~/.config/nvchad-custom/custom ~/.config/nvim/lua/custom
 
 # Most important command! Get rid of the beep!
 rmmod pcspkr
