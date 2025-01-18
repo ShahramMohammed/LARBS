@@ -6,7 +6,7 @@
 
 ### OPTIONS AND VARIABLES ###
 
-dotfilesrepo="git@github.com:ShahramMohammed/.dotfiles.git"
+dotfilesrepo="https://github.com/ShahramMohammed/.dotfiles.git"
 progsfile="https://raw.githubusercontent.com/ShahramMohammed/LARBS/master/static/progs.csv"
 aurhelper="yay"
 repobranch="master"
@@ -201,14 +201,14 @@ putgitrepo() {
 # 	sudo -u "$name" nvim -c "PlugInstall|q|q"
 # }
 
-nvchadinstall() {
-	# Installs vim plugins.
-	whiptail --infobox "Installing neovim plugins..." 7 60
-	mkdir -p "/home/$name/.config/nvim/"
-	chown -R "$name:wheel" "/home/$name/.config/nvim"
-  ln -s "home/$name/.config/nvchad-custom/custom" "home/$name/.local/src/NvChad/lua/custom"
-  ln -s "home/$name/local/src/NvChad ~/.config/nvim/"
-}
+# nvchadinstall() {
+#	# Installs vim plugins.
+#	whiptail --infobox "Installing neovim plugins..." 7 60
+#	mkdir -p "/home/$name/.config/nvim/"
+#	chown -R "$name:wheel" "/home/$name/.config/nvim"
+#  ln -s "home/$name/.config/nvchad-custom/custom" "home/$name/.local/src/NvChad/lua/custom"
+#  ln -s "home/$name/local/src/NvChad ~/.config/nvim/"
+#}
 
 makeuserjs(){
 	# Get the Arkenfox user.js and prepare it.
@@ -343,7 +343,7 @@ rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/
 	sudo -u "$name" echo "$rssurls" > "/home/$name/.config/newsboat/urls"
 
 # Install nvchad if not alread present.
-[ ! -f "/home/$name/.config/nvim/lua" ] && nvchadinstall
+#[ ! -f "/home/$name/.config/nvim/lua" ] && nvchadinstall
 
 
 # Most important command! Get rid of the beep!
