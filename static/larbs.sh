@@ -360,10 +360,10 @@ sudo -u "$name" mkdir -p "/home/$name/.config/mpd/playlists/"
 ln -sfT /bin/dash /bin/sh >/dev/null 2>&1
 
 # dbus UUID must be generated for Artix runit.
-dbus-uuidgen >/var/lib/dbus/machine-id
+# dbus-uuidgen >/var/lib/dbus/machine-id
 
 # Use system notifications for Brave on Artix
-echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
+# echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
 
 # Enable tap to click
 [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
